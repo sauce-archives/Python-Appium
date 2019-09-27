@@ -1,16 +1,26 @@
+import os
+
 from appium import webdriver
 
-desired_caps = {}
-desired_caps['platformName'] = 'Android'
-desired_caps['appiumVersion'] = '1.4.16'
-desired_caps['platformVersion'] = '4.2'
-desired_caps['deviceName'] = 'Android Emulator'
-desired_caps['browserName'] = ''
-desired_caps['name'] = 'Sample Test'
-desired_caps['app'] = 'http://appium.s3.amazonaws.com/ContactManager.apk'
 
-driver = webdriver.Remote('http://YOUR_SAUCE_USERNAME:YOUR_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub', desired_caps)
+caps = {
+        'appiumVersion':    '1.9.1',
+        'browserName':      'chrome',
+        'platformName':     'Android',
+        'platformVersion':  '8.1',
+        'deviceOrientation':'portrait',
+        'name': 'simple-android',
+        # you can set a destination for an app to load on the emulator 
+        # 'app': 'http://appium.s3.amazonaws.com/ContactManager.apk'
+}
 
-# Test Actions here...
+user = os.environ.get('SAUCE_USERNAME', 'my-username')
+access_key = os.environ.get('SAUCE_ACCESS_KEY', 'my-key')
+
+sauce_url = "https://{}:{}@ondemand.saucelabs.com/wd/hub/".format(user,access_key)
+
+driver = webdriver.Remote(sauce_url, desired_capabilities=caps)
+
+# appium application logic here
 
 driver.quit()
