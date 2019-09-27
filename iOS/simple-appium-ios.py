@@ -1,16 +1,27 @@
+import os
+
 from appium import webdriver
 
-desired_caps = {}
-desired_caps['platformName'] = 'iOS'
-desired_caps['appiumVersion'] = '1.4.16'
-desired_caps['platformVersion'] = '8.4'
-desired_caps['deviceName'] = 'iPhone 6'
-desired_caps['browserName'] = ''
-desired_caps['name'] = 'Sample Test'
-desired_caps['app'] = 'https://s3.amazonaws.com/appium/TestApp8.4.app.zip'
 
-driver = webdriver.Remote('http://YOUR_SAUCE_USERNAME:YOUR_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub', desired_caps)
+caps = {
+        'appiumVersion':    '1.13.0',
+        'browserName':      'safari',
+        'platformName':     'iOS',
+        'deviceName':       'iPhone XS Simulator',
+        'platformVersion':  '12.2',
+        'deviceOrientation':'portrait',
+        'name': 'simple-ios'
+        # you can set a destination for an app to load on the emulator 
+        # 'app': 'http://appium.s3.amazonaws.com/ContactManager.apk'
+}
 
-# Test Actions here...
+user = os.environ.get('SAUCE_USERNAME', 'my-username')
+access_key = os.environ.get('SAUCE_ACCESS_KEY', 'my-key')
+
+sauce_url = "https://{}:{}@ondemand.saucelabs.com/wd/hub/".format(user,access_key)
+
+driver = webdriver.Remote(sauce_url, desired_capabilities=caps)
+
+# appium application logic here
 
 driver.quit()
