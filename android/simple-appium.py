@@ -7,7 +7,8 @@ caps = {
         'appiumVersion':    '1.9.1',
         'browserName':      'chrome',
         'platformName':     'Android',
-        'platformVersion':  '8.1',
+        'deviceName':       'Android GoogleAPI Emulator',
+        'platformVersion':  '9.0',
         'deviceOrientation':'portrait',
         'name': 'simple-android',
         # you can set a destination for an app to load on the emulator 
