@@ -1,0 +1,1 @@
+## *NOTE* This repository is no longer maintained. For examples of using Python with Sauce RDC please see either thew [Appium with Android](https://github.com/saucelabs-sample-test-frameworks/Python-Pytest-Appium-Android) repo or [Appium with iOS](https://github.com/saucelabs-sample-test-frameworks/Python-Pytest-Appium-iOS) repo.
